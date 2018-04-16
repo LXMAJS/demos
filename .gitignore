@@ -1,0 +1,4 @@
+/* this file define some files or directories that no push to remote warehouse */
+.vscode
+.vs
+node_modules

@@ -1,0 +1,10 @@
+E:\github\demos\datetime\bin\Debug\netcoreapp2.0\datetime.deps.json
+E:\github\demos\datetime\bin\Debug\netcoreapp2.0\datetime.runtimeconfig.json
+E:\github\demos\datetime\bin\Debug\netcoreapp2.0\datetime.runtimeconfig.dev.json
+E:\github\demos\datetime\bin\Debug\netcoreapp2.0\datetime.dll
+E:\github\demos\datetime\bin\Debug\netcoreapp2.0\datetime.pdb
+E:\github\demos\datetime\obj\Debug\netcoreapp2.0\datetime.csproj.CoreCompileInputs.cache
+E:\github\demos\datetime\obj\Debug\netcoreapp2.0\datetime.AssemblyInfoInputs.cache
+E:\github\demos\datetime\obj\Debug\netcoreapp2.0\datetime.AssemblyInfo.cs
+E:\github\demos\datetime\obj\Debug\netcoreapp2.0\datetime.dll
+E:\github\demos\datetime\obj\Debug\netcoreapp2.0\datetime.pdb
