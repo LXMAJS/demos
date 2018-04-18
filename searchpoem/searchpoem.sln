@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "searchpoem", "searchpoem\searchpoem.csproj", "{667D8A01-7991-490C-BE4E-9EB978A49D2F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{667D8A01-7991-490C-BE4E-9EB978A49D2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{667D8A01-7991-490C-BE4E-9EB978A49D2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{667D8A01-7991-490C-BE4E-9EB978A49D2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{667D8A01-7991-490C-BE4E-9EB978A49D2F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ACCBCAA5-F4CE-4308-8FDA-298EC2349133}
+	EndGlobalSection
+EndGlobal
