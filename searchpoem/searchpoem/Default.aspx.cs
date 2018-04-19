@@ -11,12 +11,10 @@ namespace searchpoem
 {
     public partial class Default : System.Web.UI.Page
     {
-        public Poetries[] poetries;
+        public IReadOnlyCollection<IHit<Poetries>> poetries;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            poetries = new Poetries[0];
-
             // 索引连接
             var node = new Uri("http://127.0.0.1:9200");
             var settings = new ConnectionSettings(node).DefaultIndex("chinese-poetry");
@@ -27,7 +25,7 @@ namespace searchpoem
             poetries = SearchPoetries(client, 1, 5, keyword);
         }
 
-        public Poetries[] SearchPoetries(ElasticClient Operator, int pageindex, int pagesize, string keyword)
+        public IReadOnlyCollection<IHit<Poetries>> SearchPoetries(ElasticClient Operator, int pageindex, int pagesize, string keyword)
         {
             // 添加关键字查询条件
             var shouldList = new List<Func<QueryContainerDescriptor<Poetries>, QueryContainer>>();
@@ -55,17 +53,22 @@ namespace searchpoem
                )
                // 添加高亮
                .Highlight(h => h
-                    .Fields(f => f
-                        .Field(obj => obj.Content).Field(obj => obj.Title)
+                    .Fields(
+                        f => f
+                            .Field(obj =>  obj.Content)
+                            .PreTags("<span style=\"color: red\">")
+                            .PostTags("</span>") ,
+                        f => f
+                            .Field(obj => obj.Title)
+                            .PreTags("<span style=\"color: orange\">")
+                            .PostTags("</span>")
                     )
                )
-               //.Sort(so => so.Descending(obj => obj.Id))
-
                // 分页
                .From((pageindex - 1) * pagesize)
                .Size(pagesize)
             );
-            return searchResult.Documents.ToArray();
+            return searchResult.Hits;
         }
     }
 }
