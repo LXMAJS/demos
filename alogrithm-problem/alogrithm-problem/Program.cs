@@ -13,10 +13,10 @@ namespace alogrithm_problem
         /// <param name="n">数组2的实际元素的个数</param>
         public static void merge(int[] nums1, int m, int[] nums2, int n)
         {
-            if (m <= 0 || n <= 0)
+            if (n <= 0)
                 return;
 
-            if (nums1[m - 1] <= nums2[0])
+            if (m <= 0 || nums1[m - 1] <= nums2[0])
             {
                 // 如果数组1的最后一个元素，比数组2的元素还要小，那么不做任何处理，直接进入最后的合并环节
             }
@@ -32,6 +32,18 @@ namespace alogrithm_problem
                         temp = nums2[index2];
                         nums2[index2] = nums1[index1];
                         nums1[index1] = temp;
+                        // 此处需要对 nums2[index2] 做一次排序，直到找到最合适的位置
+                        for (int index = index2 + 1; index < n; index++)
+                        {
+                            if (nums2[index] < nums2[index2])
+                            {
+                                temp = nums2[index];
+                                nums2[index] = nums2[index2];
+                                nums2[index2] = temp;
+                            }
+                            else
+                                break;
+                        }
                         index2++;
                     }
                     index1++;
@@ -45,13 +57,18 @@ namespace alogrithm_problem
 
         static void Main(string[] args)
         {
-            int[] nums1 = new int[] { 1, 2, 3, 0, 0, 0 };
+            int[] nums1 = new int[] { 4, 5, 6, 0, 0, 0 };
             int m = 3;
 
-            int[] nums2 = new int[] { 2, 5, 6 };
+            int[] nums2 = new int[] { 1, 2, 3 };
             int n = 3;
 
             merge(nums1, m, nums2, n);
+
+            for (int i = 0; i < nums1.Length; i++)
+            {
+                Console.Write(" " + nums1[i]);
+            }
 
             Console.Read();
             Console.WriteLine("Hello World!");
