@@ -57,6 +57,7 @@ namespace alogrithm_problem
 
         static void Main(string[] args)
         {
+            /*
             int[] nums1 = new int[] { 4, 5, 6, 0, 0, 0 };
             int m = 3;
 
@@ -69,6 +70,11 @@ namespace alogrithm_problem
             {
                 Console.Write(" " + nums1[i]);
             }
+            */
+
+            int[] nums = new int[] { 1, 3, 5, 6 };
+            int index = Solution_35.SearchInsert(nums, 2);
+            Console.Write(index);
 
             Console.Read();
             Console.WriteLine("Hello World!");
