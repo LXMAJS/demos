@@ -37,9 +37,6 @@ namespace alogrithm_problem
         /// <returns></returns>
         private static int SearchInsert(int[] nums, int target, int left, int right)
         {
-            if (left > right)
-                return right;
-
             int min = left + (right - left) / 2;
 
             // 对比值，是在左边还是在右边
@@ -48,7 +45,17 @@ namespace alogrithm_problem
             else if (target > nums[min])
                 return SearchInsert(nums, target, min + 1, right);
             else
-                return SearchInsert(nums, target, left, min - 1);
+            {
+                if (left >= min - 1)
+                {
+                    if (nums[left] <= target)
+                        return left + 1;
+                    else
+                        return left;
+                }
+                else
+                    return SearchInsert(nums, target, left, min - 1);
+            }
         }
     }
 }
