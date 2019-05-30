@@ -42,20 +42,15 @@ namespace data_structure.Queue
         {
             if (this.IsFull())
                 return false;
-            
-            // 自增游标
-            this.tail++;
-            if(this.tail >= this.size)
-            {
-                // 超过数组的最大范围，则将队列头
-                this.tail = 0;
-            }
-            // 添加数据
-            val[this.tail] = value;
 
             // 首次加入值时，需要将head向前移一位
-            if (this.head == -1)
-                this.head = this.tail;
+            if (this.IsEmpty())
+                this.head = 0;
+
+            // 自增游标
+            this.tail = (this.tail + 1) % this.size;
+            // 添加数据
+            val[this.tail] = value;
 
             return true;
         }
@@ -68,19 +63,15 @@ namespace data_structure.Queue
         {
             if (this.IsEmpty())
                 return false;
-
-            // head自增（向后移一位），如果超过了size，就循环至0
-            this.head++;
-            if(this.head > this.size)
-            {
-                this.head = 0;
-            }
-
-            if(this.IsEmpty())
+            
+            if (this.head == this.tail)
             {
                 this.head = -1;
                 this.tail = -1;
+                return true;
             }
+            // head自增（向后移一位），如果超过了size，就循环至0
+            this.head = (this.head + 1) % this.size;
 
             return true;
         }
@@ -91,7 +82,7 @@ namespace data_structure.Queue
         /// <returns></returns>
         public int Front()
         {
-            return this.head == -1 ? -1 : val[this.head];
+            return this.IsEmpty() ? -1 : val[this.head];
         }
 
         /// <summary>
@@ -100,7 +91,7 @@ namespace data_structure.Queue
         /// <returns></returns>
         public int Rear()
         {
-            return this.tail == -1 ? -1 : val[this.tail];
+            return this.IsEmpty() ? -1 : val[this.tail];
         }
 
         /// <summary>
@@ -109,7 +100,7 @@ namespace data_structure.Queue
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return this.head == this.tail;
+            return this.head == -1;
         }
 
         /// <summary>
@@ -118,10 +109,7 @@ namespace data_structure.Queue
         /// <returns></returns>
         public bool IsFull()
         {
-            int next = this.tail + 1;
-            if (next >= this.size)
-                next = 0;
-            return next == this.head;
+            return (this.tail + 1) % this.size == this.head;
         }
     }
 }

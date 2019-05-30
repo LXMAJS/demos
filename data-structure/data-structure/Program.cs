@@ -7,13 +7,24 @@ namespace data_structure
     {
         static void Main(string[] args)
         {
-            MyCircularQueue q = new MyCircularQueue(5);
-            for (int i = 0; i < 8; i++)
-            {
-                bool en = q.EnQueue(i);
+            MyCircularQueue q = new MyCircularQueue(6);
 
-                Console.WriteLine($"EnQueue : {i}, result : {en.ToString()}, Head[{q.Front()}], Tail[{q.Rear()}]");
-            }
+            Console.WriteLine(q.EnQueue(6));
+
+            Console.WriteLine(q.Rear());
+            Console.WriteLine(q.Rear());
+
+            Console.WriteLine(q.DeQueue());
+            Console.WriteLine(q.EnQueue(5));
+            
+            Console.WriteLine(q.Rear());
+
+            Console.WriteLine(q.DeQueue());
+            
+            Console.WriteLine(q.Front());
+            Console.WriteLine(q.DeQueue());
+            Console.WriteLine(q.DeQueue());
+            Console.WriteLine(q.DeQueue());
 
             Console.WriteLine("Hello World!");
             Console.Read();
